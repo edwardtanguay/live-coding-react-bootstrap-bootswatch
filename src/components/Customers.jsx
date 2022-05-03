@@ -1,9 +1,41 @@
-import { Table } from 'react-bootstrap';
+import { useState } from 'react';
+import { Table, Button } from 'react-bootstrap';
+
+const pageSize = 10;
 
 export const Customers = ({ customers }) => {
+	const [begin, setBegin] = useState(0);
+	const [end, setEnd] = useState(10);
+
+	const pageBack = () => {
+		let _begin = begin - pageSize;
+		let _end = 0;
+		if (_begin < 0) {
+			_begin = customers.length - pageSize;
+			_end = customers.length;
+		}
+		setBegin(_begin);
+		setEnd(_end);
+	};
+
+	const pageForward = () => {
+		let _begin = begin + pageSize;
+		let _end = _begin + (pageSize);
+		if (_end > customers.length) {
+			_end = customers.length;
+		}
+		if (_begin > customers.length) {
+			_begin = 0;
+			_end = 10;
+		}
+		setBegin(_begin);
+		setEnd(_end);
+	};
+
 	return (
 		<>
 			<h2>Customers</h2>
+			{begin}/{end-1}
 			<Table striped bordered hover>
 				<thead>
 					<tr>
@@ -14,7 +46,7 @@ export const Customers = ({ customers }) => {
 					</tr>
 				</thead>
 				<tbody>
-					{customers.slice(0,10).map((cust, index) => {
+					{customers.slice(begin, end).map((cust, index) => {
 						return (
 							<tr key={index}>
 								<td>{cust.customerID}</td>
@@ -25,6 +57,14 @@ export const Customers = ({ customers }) => {
 						);
 					})}
 				</tbody>
+				<tfoot>
+					<Button onClick={pageBack} className="mt-2">
+						{'<<'}
+					</Button>
+					<Button onClick={pageForward} className="mt-2 ms-2">
+						{'>>'}
+					</Button>
+				</tfoot>
 			</Table>
 		</>
 	);
