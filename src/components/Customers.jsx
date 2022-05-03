@@ -9,7 +9,7 @@ export const Customers = ({ customers }) => {
 
 	const pageBack = () => {
 		let _begin = begin - pageSize;
-		let _end = 0;
+		let _end = end - pageSize;
 		if (_begin < 0) {
 			_begin = customers.length - pageSize;
 			_end = customers.length;
@@ -35,7 +35,6 @@ export const Customers = ({ customers }) => {
 	return (
 		<>
 			<h2>Customers</h2>
-			{begin}/{end-1}
 			<Table striped bordered hover>
 				<thead>
 					<tr>
