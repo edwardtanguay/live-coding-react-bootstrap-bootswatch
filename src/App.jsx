@@ -6,6 +6,8 @@ import './styles/bootstrap.darkly.min.css';
 import { Container, Button, Card } from 'react-bootstrap';
 import { Employees } from './components/Employees';
 import { Customers } from './components/Customers';
+import { FaSpinner } from 'react-icons/fa';
+import './styles/App.css';
 
 const employeesUrl =
 	'https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/json/employees.json';
@@ -48,7 +50,7 @@ function App() {
 					className="btn-success"
 					disabled={customers.length === 0}
 				>
-				{customers.length === 0 ? 'Loading...' : 'Customers'}
+				{customers.length === 0 ? <FaSpinner className="spinner"/> : 'Customers'}
 				</Button>
 				<Card className="mt-2">
 					<Card.Body>
