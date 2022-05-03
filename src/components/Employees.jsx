@@ -9,7 +9,7 @@ export const Employees = ({ employees }) => {
 				<Carousel.Item>
 					<img
 						className="d-block w-100"
-						src="holder.js/800x400?text=First slide&bg=373940"
+						src="images/employees/employee_1.jpg"
 						alt="First slide"
 					/>
 					<Carousel.Caption>
