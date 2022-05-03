@@ -3,6 +3,7 @@ import './styles/bootstrap.darkly.min.css';
 // import './styles/bootstrap.morph.min.css';
 // import './styles/bootstrap.quartz.min.css';
 import { Container, Button, Card } from 'react-bootstrap';
+import { Employees } from './components/Employees';
 
 function App() {
     return (
@@ -12,7 +13,9 @@ function App() {
                 <Button className="me-2">Employees</Button>
                 <Button className="btn-success">Customers</Button>
                 <Card className="mt-2">
-                    <Card.Body>This is some text within a card body.</Card.Body>
+                    <Card.Body>
+                        <Employees />
+                    </Card.Body>
                 </Card>
             </Container>
         </div>
