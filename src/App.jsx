@@ -1,7 +1,11 @@
 function App() {
   return (
     <div className="App">
-      test
+      <div className="container">
+       <h1>Company Site</h1> 
+       <button className="btn-primary me-1 ">Employees</button>
+       <button className="btn-success">Customers</button>
+      </div>
     </div>
   )
 }
