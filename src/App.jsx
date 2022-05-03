@@ -10,25 +10,15 @@ import { Customers } from './components/Customers';
 function App() {
 	const [mode, setMode] = useState('employees');
 
-	const handleEmployeeButtonClick = () => {
-		setMode('employees');
-		console.log('employee button clicked');
-	};
-
-	const handleCustomerButtonClick = () => {
-		setMode('customers');
-		console.log('customer button clicked');
-	};
-
 	return (
 		<div>
 			<Container className="pt-5">
 				<h1>Company Site</h1>
-				<Button onClick={handleEmployeeButtonClick} className="me-2">
+				<Button onClick={() => setMode('employees')} className="me-2">
 					Employees
 				</Button>
 				<Button
-					onClick={handleCustomerButtonClick}
+					onClick={() => setMode('customers')}
 					className="btn-success"
 				>
 					Customers
