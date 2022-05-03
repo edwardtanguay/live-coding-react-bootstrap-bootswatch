@@ -26,11 +26,13 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		(async () => {
-			const response = await fetch(customersUrl);
-			const _customers = await response.json();
-			setCustomers(_customers);
-		})();
+		setTimeout(() => {
+			(async () => {
+				const response = await fetch(customersUrl);
+				const _customers = await response.json();
+				setCustomers(_customers);
+			})();
+		}, 3000);
 	}, []);
 
 	return (
@@ -44,8 +46,9 @@ function App() {
 				<Button
 					onClick={() => setMode('customers')}
 					className="btn-success"
+					disabled={customers.length === 0}
 				>
-					Customers
+				{customers.length === 0 ? 'Loading...' : 'Customers'}
 				</Button>
 				<Card className="mt-2">
 					<Card.Body>
