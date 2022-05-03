@@ -10,15 +10,26 @@ import { Customers } from './components/Customers';
 const employeesUrl =
 	'https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/json/employees.json';
 
+const customersUrl = 'https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/json/customers.json'; 
+
 function App() {
 	const [mode, setMode] = useState('employees');
 	const [employees, setEmployees] = useState([]);
+	const [customers, setCustomers] = useState([]);
 
 	useEffect(() => {
 		(async () => {
 			const response = await fetch(employeesUrl);
 			const _employees = await response.json();
 			setEmployees(_employees);
+		})();
+	}, []);
+
+	useEffect(() => {
+		(async () => {
+			const response = await fetch(customersUrl);
+			const _customers = await response.json();
+			setCustomers(_customers);
 		})();
 	}, []);
 
@@ -41,7 +52,7 @@ function App() {
 						{mode === 'employees' ? (
 							<Employees employees={employees} />
 						) : (
-							<Customers />
+							<Customers customers={customers} />
 						)}
 					</Card.Body>
 				</Card>
