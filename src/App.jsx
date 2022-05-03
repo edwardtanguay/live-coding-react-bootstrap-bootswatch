@@ -15,7 +15,7 @@ const employeesUrl =
 const customersUrl = 'https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/json/customers.json'; 
 
 function App() {
-	const [mode, setMode] = useState('employees');
+	const [mode, setMode] = useState('customers');
 	const [employees, setEmployees] = useState([]);
 	const [customers, setCustomers] = useState([]);
 
@@ -34,7 +34,7 @@ function App() {
 				const _customers = await response.json();
 				setCustomers(_customers);
 			})();
-		}, 3000);
+		}, 0);
 	}, []);
 
 	return (
