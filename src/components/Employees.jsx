@@ -13,7 +13,6 @@ export const Employees = ({ employees }) => {
 							<img
 								className="d-block w-100"
 								src={`images/employees/employee_${emp.employeeID}.jpg`}
-								alt="First slide"
 							/>
 							<Carousel.Caption>
 								<h3>{emp.firstName} {emp.lastName}</h3>

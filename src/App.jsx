@@ -7,7 +7,8 @@ import { Container, Button, Card } from 'react-bootstrap';
 import { Employees } from './components/Employees';
 import { Customers } from './components/Customers';
 
-// import employees from './data/employees.json';
+const employeesUrl =
+	'https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/json/employees.json';
 
 function App() {
 	const [mode, setMode] = useState('employees');
@@ -15,9 +16,7 @@ function App() {
 
 	useEffect(() => {
 		(async () => {
-			const response = await fetch(
-				'https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/json/employees.json'
-			);
+			const response = await fetch(employeesUrl);
 			const _employees = await response.json();
 			setEmployees(_employees);
 		})();
