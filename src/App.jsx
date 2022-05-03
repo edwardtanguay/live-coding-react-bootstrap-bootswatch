@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/bootstrap.darkly.min.css';
 // import './styles/bootstrap.morph.min.css';
@@ -6,10 +6,22 @@ import './styles/bootstrap.darkly.min.css';
 import { Container, Button, Card } from 'react-bootstrap';
 import { Employees } from './components/Employees';
 import { Customers } from './components/Customers';
-import employees from './data/employees.json';
+
+// import employees from './data/employees.json';
 
 function App() {
 	const [mode, setMode] = useState('employees');
+	const [employees, setEmployees] = useState([]);
+
+	useEffect(() => {
+		(async () => {
+			const response = await fetch(
+				'https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/json/employees.json'
+			);
+			const _employees = await response.json();
+			setEmployees(_employees);
+		})();
+	}, []);
 
 	return (
 		<div>
@@ -27,7 +39,11 @@ function App() {
 				</Button>
 				<Card className="mt-2">
 					<Card.Body>
-						{mode === 'employees' ? <Employees employees={employees} /> : <Customers />}
+						{mode === 'employees' ? (
+							<Employees employees={employees} />
+						) : (
+							<Customers />
+						)}
 					</Card.Body>
 				</Card>
 			</Container>
