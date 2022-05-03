@@ -7,7 +7,7 @@ export const Customers = ({ customers }) => {
 	const [begin, setBegin] = useState(0);
 	const [end, setEnd] = useState(10);
 
-	const pageBack = () => {
+	const handlePageBack = () => {
 		let _begin = begin - pageSize;
 		let _end = end - pageSize;
 		if (_begin < 0) {
@@ -18,7 +18,7 @@ export const Customers = ({ customers }) => {
 		setEnd(_end);
 	};
 
-	const pageForward = () => {
+	const handlePageForward = () => {
 		let _begin = begin + pageSize;
 		let _end = _begin + (pageSize);
 		if (_end > customers.length) {
@@ -57,10 +57,10 @@ export const Customers = ({ customers }) => {
 					})}
 				</tbody>
 				<tfoot>
-					<Button onClick={pageBack} className="mt-2">
+					<Button onClick={handlePageBack} className="mt-2">
 						{'<<'}
 					</Button>
-					<Button onClick={pageForward} className="mt-2 ms-2">
+					<Button onClick={handlePageForward} className="mt-2 ms-2">
 						{'>>'}
 					</Button>
 				</tfoot>
