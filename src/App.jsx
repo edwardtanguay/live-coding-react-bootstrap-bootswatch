@@ -4,6 +4,7 @@ import './styles/bootstrap.darkly.min.css';
 // import './styles/bootstrap.quartz.min.css';
 import { Container, Button, Card } from 'react-bootstrap';
 import { Employees } from './components/Employees';
+import { Customers } from './components/Customers';
 
 function App() {
     return (
@@ -14,7 +15,7 @@ function App() {
                 <Button className="btn-success">Customers</Button>
                 <Card className="mt-2">
                     <Card.Body>
-                        <Employees />
+                        <Customers />
                     </Card.Body>
                 </Card>
             </Container>
